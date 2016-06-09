@@ -1,0 +1,20 @@
+{
+    "name": "sedp-mis/base-report",
+    "description": "Abstraction and codebase for reports",
+    "keywords": ["report", "base report", "report grid query", "grid query"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arjon Jason Castro",
+            "email": "ajcastro29@gmail.com"
+        }
+    ],
+    "require": {
+        "base-grid-query": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "SedpMis\\BaseReport\\": "src/"
+        }
+    }
+}
