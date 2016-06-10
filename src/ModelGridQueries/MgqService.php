@@ -11,6 +11,11 @@ class MgqService
      */
     public static $mgqsFactory;
 
+    /**
+     * The created mgqs.
+     *
+     * @var array
+     */
     protected $mgqs = [];
 
     /**
