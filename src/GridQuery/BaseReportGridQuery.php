@@ -2,7 +2,7 @@
 
 namespace SedpMis\BaseReport\GridQuery;
 
-use Services\ModelGridQueries\MGQService;
+use SedpMis\BaseReport\ModelGridQueries\MgqService;
 
 abstract class BaseReportGridQuery extends BaseGridQuery
 {
@@ -102,7 +102,7 @@ abstract class BaseReportGridQuery extends BaseGridQuery
      */
     public function startJoinTo($query, $tableAlias, $foreignTable = null, $foreignKey = null)
     {
-        $mgqService = new MGQService;
+        $mgqService = new MgqService;
 
         $query                  = $mgqService->startJoinTo($query, $tableAlias, $foreignTable, $foreignKey);
         $this->modelGridQueries = array_merge($this->modelGridQueries, $mgqService->getModelGridQueries());
