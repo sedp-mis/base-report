@@ -1,6 +1,6 @@
 <?php
 
-namespace SedpMis\BaseReport\Query;
+namespace SedpMis\BaseReport;
 
 /**
  * A builder-pattern class which builds the report query.
