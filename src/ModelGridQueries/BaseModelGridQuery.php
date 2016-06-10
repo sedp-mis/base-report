@@ -1,9 +1,9 @@
 <?php
 
-namespace SedpMis\BaseReport\ModelGridQueries;
+namespace SedpMis\Base\Report\ModelGridQueries;
 
-use SedpMis\BaseGridQuery\BaseGridQuery;
-use SedpMis\BaseGridQuery\GridQueryInterface;
+use SedpMis\Base\GridQuery\BaseGridQuery;
+use SedpMis\Base\GridQuery\GridQueryInterface;
 use Illuminate\Database\DatabaseManager as DB;
 
 abstract class BaseModelGridQuery extends  BaseGridQuery implements GridQueryInterface, ModelGridQueryInterface

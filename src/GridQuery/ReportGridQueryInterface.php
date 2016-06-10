@@ -1,6 +1,8 @@
 <?php
 
-namespace SedpMis\BaseReport\GridQuery;
+namespace SedpMis\Base\Report\GridQuery;
+
+use SedpMis\Base\GridQuery\GridQueryInterface;
 
 interface ReportGridQueryInterface extends GridQueryInterface
 {

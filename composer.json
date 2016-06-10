@@ -10,11 +10,12 @@
         }
     ],
     "require": {
+        "php": ">=5.4.0",
         "base-grid-query": "dev-master"
     },
     "autoload": {
         "psr-4": {
-            "SedpMis\\BaseReport\\": "src/"
+            "SedpMis\\Base\\Report\\": "src/"
         }
     }
 }

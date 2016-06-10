@@ -1,6 +1,6 @@
 <?php
 
-namespace SedpMis\BaseReport\GridQuery;
+namespace SedpMis\Base\Report\GridQuery;
 
 interface SummarizableInterface
 {
