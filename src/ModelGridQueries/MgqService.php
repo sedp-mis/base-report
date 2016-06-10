@@ -5,9 +5,9 @@ namespace SedpMis\BaseReport\ModelGridQueries;
 class MgqService
 {
     /**
-     * Mgqs factory.
+     * Mgqs factory. Should have a method name mqgs() that will return instance of mgqs.
      * 
-     * @var \SedpMis\BaseReport\ModelGridQueries\MgqsFactoryInterface
+     * @var mixed
      */
     public static $mgqsFactory;
 
@@ -21,12 +21,8 @@ class MgqService
      */
     public function initMgqs($tableAlias)
     {
-        if (!static::$mgqsFactory instanceof MgqsFactoryInterface) {
-            throw new \Exception('Error: $mgqsFactory should implements \SedpMis\BaseReport\ModelGridQueries\MgqsFactoryInterface.');
-        }
-
         // Instantiate all mgqs
-        $mgqs = static::$mgqsFactory->makeMgqs();
+        $mgqs = static::$mgqsFactory->mgqs();
 
         return $this->mgqs = array_start_from($mgqs, function ($mgq) use ($tableAlias) {
             return $mgq->tableAlias() === $tableAlias;
