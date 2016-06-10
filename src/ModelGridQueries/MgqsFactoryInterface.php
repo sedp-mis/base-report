@@ -1,6 +1,6 @@
 <?php
 
-namespace SedpMis\Base\Report\ModelGridQueries;
+namespace SedpMis\BaseReport\ModelGridQueries;
 
 interface MgqsFactoryInterface
 {

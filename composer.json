@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SedpMis\\Base\\Report\\": "src/"
+            "SedpMis\\BaseReport\\": "src"
         }
     },
     "minimum-stability": "dev"
