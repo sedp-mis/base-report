@@ -23,7 +23,7 @@ abstract class BaseReportGridQuery extends BaseGridQuery
     /**
      * Array of modelGridQueries.
      *
-     * @var array[\Services\ModelGridQueries\ModelGridQueryInterface]
+     * @var array[\SedpMis\BaseReport\ModelGridQueries\ModelGridQueryInterface]
      */
     protected $modelGridQueries = [];
 
