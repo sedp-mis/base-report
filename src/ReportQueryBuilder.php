@@ -10,7 +10,7 @@ class ReportQueryBuilder
     /**
      * The report gridQuery.
      *
-     * @var \SedpMis\BaseReport\GridQuery\ReportGridQueryInterface
+     * @var \SedpMis\BaseReport\GridQuery\BaseReportGridQuery
      */
     protected $gridQuery;
 
@@ -31,7 +31,7 @@ class ReportQueryBuilder
     /**
      * Constructor.
      *
-     * @param \SedpMis\BaseReport\GridQuery\ReportGridQueryInterface $gridQuery
+     * @param \SedpMis\BaseReport\GridQuery\BaseReportGridQuery $gridQuery
      * @param string $startDate
      * @param string $endDate
      * @param string|null $columnPresentation
