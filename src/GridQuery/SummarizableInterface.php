@@ -2,6 +2,9 @@
 
 namespace SedpMis\BaseReport\GridQuery;
 
+/**
+ * @deprecated
+ */
 interface SummarizableInterface
 {
     /**

@@ -26,6 +26,10 @@ class MgqService
      */
     public function initMgqs($tableAlias)
     {
+        if (is_null(static::$mgqsFactory)) {
+            throw new \Exception('Static $mgqsFactory is not yet set.');
+        }
+        
         // Instantiate all mgqs
         $mgqs = static::$mgqsFactory->mgqs();
 
