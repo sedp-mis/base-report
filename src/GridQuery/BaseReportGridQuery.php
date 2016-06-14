@@ -3,6 +3,7 @@
 namespace SedpMis\BaseReport\GridQuery;
 
 use SedpMis\BaseReport\ModelGridQueries\MgqService;
+use SedpMis\BaseGridQuery\BaseGridQuery;
 
 abstract class BaseReportGridQuery extends BaseGridQuery
 {
