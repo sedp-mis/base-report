@@ -2,13 +2,16 @@
 
 namespace SedpMis\BaseReport\GridQuery;
 
-class ColumnedReportGridQuery extends BaseReportGridQuery
+class ColumnedReportGridQuery extends BaseReportGridQuery implements ReportGridQueryInterface
 {
     protected $columns = [];
 
-    public function __construct($query, array $columns, $modelGridQueries)
+    protected $gridQuery;
+
+    public function __construct($gridQuery, array $columns, $modelGridQueries)
     {
-        $this->query            = $query;
+        $this->gridQuery        = $gridQuery;
+        $this->query            = $gridQuery->query();
         $this->columns          = $columns;
         $this->modelGridQueries = $modelGridQueries;
     }
@@ -16,5 +19,10 @@ class ColumnedReportGridQuery extends BaseReportGridQuery
     public function columns()
     {
         return $this->columns;
+    }
+
+    public function dateReferenceColumn()
+    {
+        return $this->gridQuery->dateReferenceColumn();
     }
 }
