@@ -3,6 +3,7 @@
 namespace SedpMis\BaseReport\GridQuery;
 
 use SedpMis\BaseReport\ModelGridQueries\MgqService;
+use SedpMis\BaseGridQuery\BaseGridQuery;
 
 abstract class BaseReportGridQuery extends BaseGridQuery
 {
@@ -60,7 +61,7 @@ abstract class BaseReportGridQuery extends BaseGridQuery
      */
     public function columnedReportGridQuery($columnPresentation)
     {
-        return new ColumnedReportGridQuery($this->query(), $this->getColumnsToDisplay($columnPresentation), $this->getModelGridQueries());
+        return new ColumnedReportGridQuery($this, $this->getColumnsToDisplay($columnPresentation), $this->getModelGridQueries());
     }
 
     /**
