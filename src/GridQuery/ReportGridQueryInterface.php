@@ -2,7 +2,7 @@
 
 namespace SedpMis\BaseReport\GridQuery;
 
-use SedpMis\Base\GridQuery\GridQueryInterface;
+use SedpMis\BaseGridQuery\GridQueryInterface;
 
 interface ReportGridQueryInterface extends GridQueryInterface
 {
