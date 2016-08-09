@@ -29,16 +29,6 @@ abstract class BaseReportGridQuery extends BaseGridQuery
     protected $modelGridQueries = [];
 
     /**
-     * Array of column presenation.
-     *
-     * @var array
-     */
-    protected $columnPresentations = [
-        'member'  => 'memberColumns',
-        'summary' => 'summaryColumns'
-    ];
-
-    /**
      * Set the date filters for the report grid.
      *
      * @param string $startDate
@@ -73,10 +63,10 @@ abstract class BaseReportGridQuery extends BaseGridQuery
     public function getColumnsToDisplay($columnPresentation)
     {
         if (!$this->hasColumnPresentation($columnPresentation)) {
-            throw new \Exception("Invalid column presentation `{$columnPresentation}`.");
+            throw new \Exception("Class ".static::class." has no columnPresentation \"{$columnPresentation}\".");
         }
 
-        $method = $this->columnPresentations[$columnPresentation];
+        $method = $columnPresentation.'Columns';
 
         return $this->{$method}();
     }
@@ -89,7 +79,7 @@ abstract class BaseReportGridQuery extends BaseGridQuery
      */
     public function hasColumnPresentation($columnPresentation)
     {
-        return array_key_exists($columnPresentation, $this->columnPresentations);
+        return method_exists($this, $columnPresentation.'Columns');
     }
 
     /**
