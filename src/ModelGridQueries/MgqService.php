@@ -31,9 +31,9 @@ class MgqService
     {
         if (is_null(static::$mgqsFactory)) {
             // Resolve $mgqsFactory
-            $mgqsFactoryClass = Config::get('sedp-mis_base_report.mgqs_factory');
+            $mgqsFactoryClass = Config::get('sedp-mis_base-report.mgqs_factory');
             if (!$mgqsFactoryClass) {
-                throw new \Exception('Config `sedp-mis_base_report.mgqs_factory` is not defined');
+                throw new \Exception('Config `sedp-mis_base-report.mgqs_factory` is not defined');
             }
             static::$mgqsFactory = App::make($mgqsFactoryClass);
         }
