@@ -25,4 +25,14 @@ class ColumnedReportGridQuery extends BaseReportGridQuery implements ReportGridQ
     {
         return $this->gridQuery->dateReferenceColumn();
     }
+
+    public function getModelGridQueries()
+    {
+        return $this->gridQuery->getModelGridQueries();
+    }
+
+    public function defaultGroupByKey()
+    {
+        return method_exists($this->gridQuery, 'defaultGroupByKey') ? $this->gridQuery->defaultGroupByKey() : [];
+    }
 }
