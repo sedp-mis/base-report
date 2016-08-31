@@ -2,6 +2,8 @@
 
 namespace SedpMis\BaseReport\ModelGridQueries;
 
+use Illuminate\Support\Facades\Config;
+
 class MgqService
 {
     /**
@@ -27,7 +29,12 @@ class MgqService
     public function initMgqs($tableAlias)
     {
         if (is_null(static::$mgqsFactory)) {
-            throw new \Exception('Static $mgqsFactory is not yet set.');
+            // Resolve $mgqsFactory
+            $mgqsFactoryClass = Config::get('sedp-mis_base_report.mgqs_factory');
+            if (!$mgqsFactoryClass) {
+                throw new \Exception('Config `sedp-mis_base_report.mgqs_factory` is not defined');
+            }
+            static::$mgqsFactory = App::make($mgqsFactoryClass);
         }
         
         // Instantiate all mgqs
