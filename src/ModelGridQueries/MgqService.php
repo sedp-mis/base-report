@@ -57,10 +57,23 @@ class MgqService
      */
     public function startJoinTo($query, $tableAlias, $foreignTable = null, $foreignKey = null)
     {
+        $lastIndex = -1;
+
         foreach ($this->initMgqs($tableAlias) as $index => $mgq) {
+            if ($lastIndex >= $index) {
+                continue;
+            }
+
             $mgq->join($query, $foreignTable, $foreignKey);
 
-            $parentMgq = $this->getMgq($index + 1);
+            $parentMgq = $this->getMgq(++$index);
+
+
+            while (method_exists($mgq, 'connectToParent') && $mgq->connectToParent() !== get_class($parentMgq)) {
+                $parentMgq = $this->getMgq(++$index);
+
+                $lastIndex = $index;
+            }
 
             // Get the connection foreign key for the mgq and its parent mgq,
             // like centers has classification_id foreign key of classifications table
