@@ -109,6 +109,27 @@ abstract class BaseReportGridQuery extends BaseGridQuery
     }
 
     /**
+     * Start joining from a table up to a certain table only.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  string $fromTable
+     * @param  string $uptoTable
+     * @param  string $tableAlias
+     * @param  string $foreignTable
+     * @param  string $foreignKey
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function startJoinFromUpto($query, $fromTable, $uptoTable, $foreignTable = null, $foreignKey = null)
+    {
+        $mgqService = new MgqService;
+
+        $query                  = $mgqService->startJoinFromUpto($query, $fromTable, $uptoTable, $foreignTable, $foreignKey);
+        $this->modelGridQueries = array_merge($this->modelGridQueries, $mgqService->getModelGridQueries());
+
+        return $query;
+    }
+
+    /**
      * Return the columns to be added in select, base from the starting tableAlias.
      *
      * @param  string $tableAlias

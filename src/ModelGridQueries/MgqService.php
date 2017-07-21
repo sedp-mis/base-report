@@ -60,14 +60,51 @@ class MgqService
         foreach ($this->initMgqs($tableAlias) as $index => $mgq) {
             $mgq->join($query, $foreignTable, $foreignKey);
 
+            // Get the next parent table
             $parentMgq = $this->getMgq($index + 1);
 
-            // Get the connection foreign key for the mgq and its parent mgq,
-            // like centers has classification_id foreign key of classifications table
+            // Get the connecting foreign key between the mgq and its parent mgq
             $foreignKey = $parentMgq && method_exists($mgq, 'makeForeignKey') ?
                 $mgq->makeForeignKey($parentMgq->tableAlias()) :
                 null;
 
+            // Assign the child as next foreign table to connect to the parent table
+            $foreignTable = $mgq->tableAlias();
+        }
+
+        return $query;
+    }
+
+    /**
+     * Start joining from a table up to a certain table only.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  string $fromTable
+     * @param  string $uptoTable
+     * @param  string $tableAlias
+     * @param  string $foreignTable
+     * @param  string $foreignKey
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function startJoinFromUpto($query, $fromTable, $uptoTable, $foreignTable = null, $foreignKey = null)
+    {
+        foreach ($this->initMgqs($tableAlias) as $index => $mgq) {
+
+            $mgq->join($query, $foreignTable, $foreignKey);
+
+            if ($uptoTable === $mgq->tableAlias()) {
+                break;
+            }
+
+            // Get the next parent table
+            $parentMgq = $this->getMgq($index + 1);
+
+            // Get the connecting foreign key between the mgq and its parent mgq
+            $foreignKey = $parentMgq && method_exists($mgq, 'makeForeignKey') ?
+                $mgq->makeForeignKey($parentMgq->tableAlias()) :
+                null;
+
+            // Assign the child as next foreign table to connect to the parent table
             $foreignTable = $mgq->tableAlias();
         }
 
