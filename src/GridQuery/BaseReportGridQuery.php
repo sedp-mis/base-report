@@ -29,6 +29,13 @@ abstract class BaseReportGridQuery extends BaseGridQuery
     protected $modelGridQueries = [];
 
     /**
+     * Report Header.
+     *
+     * @var mixed
+     */
+    protected $reportHeader;
+
+    /**
      * Set the date filters for the report grid.
      *
      * @param string $startDate
@@ -170,5 +177,27 @@ abstract class BaseReportGridQuery extends BaseGridQuery
     public function defaultGroupByKey()
     {
         return [];
+    }
+
+    /**
+     * Set the report header.
+     *
+     * @return $this
+     */
+    public function setReportHeader($reportHeader)
+    {
+        $this->reportHeader = $reportHeader;
+
+        return $this;
+    }
+
+    /**
+     * Return the report header.
+     *
+     * @return mixed
+     */
+    public function reportHeader()
+    {
+        return $this->reportHeader;
     }
 }
