@@ -81,14 +81,13 @@ class MgqService
      * @param  \Illuminate\Database\Eloquent\Builder $query
      * @param  string $fromTable
      * @param  string $uptoTable
-     * @param  string $tableAlias
      * @param  string $foreignTable
      * @param  string $foreignKey
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function startJoinFromUpto($query, $fromTable, $uptoTable, $foreignTable = null, $foreignKey = null)
     {
-        foreach ($this->initMgqs($tableAlias) as $index => $mgq) {
+        foreach ($this->initMgqs($fromTable) as $index => $mgq) {
 
             $mgq->join($query, $foreignTable, $foreignKey);
 
